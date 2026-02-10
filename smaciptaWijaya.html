@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Website Sekolah - SMA Harapan Bangsa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body { scroll-behavior: smooth; }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+            url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+        }
+        /* Style untuk halaman detail yang tersembunyi */
+        .page-detail { 
+            display: none; 
+            padding-top: 100px; 
+            min-height: 80vh; 
+        }
+        .card { transition: transform 0.3s; }
+        .card:hover { transform: translateY(-10px); cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#" onclick="bukaHalaman('beranda')">SMA Harapan Bangsa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#" onclick="bukaHalaman('beranda')">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="#jurusan">Jurusan</a></li>
+                <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main id="halaman-utama">
+    <section id="beranda" class="hero d-flex align-items-center">
+        <div class="container text-center">
+            <h1 class="fw-bold">Selamat Datang di SMA Harapan Bangsa</h1>
+            <p class="lead">Mewujudkan Generasi Unggul dan Berkarakter</p>
+            <a href="#profil" class="btn btn-warning btn-lg mt-3 shadow">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <section id="profil" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <h2 class="fw-bold border-bottom d-inline-block pb-2">Profil Sekolah</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="lead">SMA Harapan Bangsa berfokus pada pengembangan akademik dan karakter siswa dengan dukungan tenaga pendidik profesional.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group shadow-sm">
+                        <li class="list-group-item">⭐ Akreditasi A</li>
+                        <li class="list-group-item">👨‍🏫 Guru Berpengalaman</li>
+                        <li class="list-group-item">🏫 Fasilitas Lengkap</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="jurusan" class="bg-light py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Pilihan Jurusan</h2>
+                <p>Silahkan pilih jurusan untuk melihat informasi lebih detail</p>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0" onclick="bukaHalaman('ipa')">
+                        <div class="card-body py-5">
+                            <h3 class="fw-bold text-primary">IPA</h3>
+                            <p class="text-muted">Ilmu Pengetahuan Alam</p>
+                            <button class="btn btn-outline-primary mt-3">Masuk Halaman IPA</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0" onclick="bukaHalaman('ips')">
+                        <div class="card-body py-5">
+                            <h3 class="fw-bold text-success">IPS</h3>
+                            <p class="text-muted">Ilmu Pengetahuan Sosial</p>
+                            <button class="btn btn-outline-success mt-3">Masuk Halaman IPS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow border-0" onclick="bukaHalaman('bahasa')">
+                        <div class="card-body py-5">
+                            <h3 class="fw-bold text-info">Bahasa</h3>
+                            <p class="text-muted">Bahasa dan Sastra</p>
+                            <button class="btn btn-outline-info mt-3">Masuk Halaman Bahasa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="py-5">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Hubungi Kami</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 bg-white p-4 shadow rounded">
+                    <form onsubmit="kirimPesan(event)">
+                        <div class="mb-3">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Contoh: Budi Santoso" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Alamat Email</label>
+                            <input type="email" class="form-control" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Pesan</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button class="btn btn-primary w-100">Kirim Sekarang</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="page-ipa" class="page-detail container">
+    <div class="bg-white p-5 shadow rounded">
+        <h1 class="fw-bold text-primary">Jurusan IPA (Ilmu Pengetahuan Alam)</h1>
+        <hr>
+        <p class="lead">Halaman ini berisi informasi lengkap mengenai jurusan IPA.</p>
+        <h4>Mata Pelajaran Inti:</h4>
+        <ul>
+            <li>Fisika</li>
+            <li>Kimia</li>
+            <li>Biologi</li>
+            <li>Matematika Peminatan</li>
+        </ul>
+        <button class="btn btn-secondary mt-4" onclick="bukaHalaman('beranda')">← Kembali ke Beranda</button>
+    </div>
+</div>
+
+<div id="page-ips" class="page-detail container">
+    <div class="bg-white p-5 shadow rounded">
+        <h1 class="fw-bold text-success">Jurusan IPS (Ilmu Pengetahuan Sosial)</h1>
+        <hr>
+        <p class="lead">Halaman ini berisi informasi lengkap mengenai jurusan IPS.</p>
+        <h4>Mata Pelajaran Inti:</h4>
+        <ul>
+            <li>Ekonomi</li>
+            <li>Geografi</li>
+            <li>Sosiologi</li>
+            <li>Sejarah Peminatan</li>
+        </ul>
+        <button class="btn btn-secondary mt-4" onclick="bukaHalaman('beranda')">← Kembali ke Beranda</button>
+    </div>
+</div>
+
+<div id="page-bahasa" class="page-detail container">
+    <div class="bg-white p-5 shadow rounded">
+        <h1 class="fw-bold text-info">Jurusan Bahasa dan Sastra</h1>
+        <hr>
+        <p class="lead">Halaman ini berisi informasi lengkap mengenai jurusan Bahasa.</p>
+        <h4>Mata Pelajaran Inti:</h4>
+        <ul>
+            <li>Bahasa & Sastra Indonesia</li>
+            <li>Bahasa & Sastra Inggris</li>
+            <li>Bahasa Asing (Jepang/Jerman)</li>
+            <li>Antropologi</li>
+        </ul>
+        <button class="btn btn-secondary mt-4" onclick="bukaHalaman('beranda')">← Kembali ke Beranda</button>
+    </div>
+</div>
+
+<footer class="bg-primary text-white text-center py-4 mt-5">
+    <p class="mb-0">© 2026 SMA Harapan Bangsa | Created with ❤️</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Fungsi untuk ganti-ganti halaman
+function bukaHalaman(namaHalaman) {
+    // Sembunyikan semua section detail dan halaman utama
+    document.getElementById('halaman-utama').style.display = 'none';
+    document.getElementById('page-ipa').style.display = 'none';
+    document.getElementById('page-ips').style.display = 'none';
+    document.getElementById('page-bahasa').style.display = 'none';
+
+    // Tampilkan halaman yang dipilih
+    if(namaHalaman === 'beranda') {
+        document.getElementById('halaman-utama').style.display = 'block';
+    } else {
+        document.getElementById('page-' + namaHalaman).style.display = 'block';
+    }
+    
+    // Tarik scroll ke atas otomatis setiap pindah halaman
+    window.scrollTo(0, 0);
+}
+
+function kirimPesan(e) {
+    e.preventDefault();
+    alert("Terima kasih! Pesan Anda telah kami terima.");
+}
+</script>
+
+</body>
+</html>
